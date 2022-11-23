@@ -18,7 +18,13 @@ img {
   height: auto;
 }
 
+
+
+
 /*====  VARIABLES ============================ */
+
+/* Variaveis globais para melhorar e facilitar a leitura/manutencao do projeto */
+
 :root {
   --header-height: 4.5rem;
 
@@ -42,23 +48,31 @@ img {
 }
 
 /*===  BASE ============================ */
-html {
-  scroll-behavior: smooth;
-}
 
+/* //Para ter uma rolada lenta */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+
+/* //Definição da font, cor do texto background */
 body {
   font: 400 1rem var(--body-font);
   color: var(--text-color);
   background: var(--body-color);
+
+  /* //Para tratar as imagens em diferentes navegadores, ex: Safari. // */
   -webkit-font-smoothing: antialiased;
 }
 
+/* Para tratar e configurar o titulo */
 .title {
   font: 700 var(--title-font-size) var(--title-font);
   color: var(--title-color);
   -webkit-font-smoothing: auto;
 }
 
+/* Tratamento da classe button, com suas config e transições */
 .button {
   background-color: var(--base-color);
   color: var(--text-color-light);
@@ -71,10 +85,12 @@ body {
   transition: background 0.3s;
 }
 
+/* Para tratar o hover do botao */
 .button:hover {
   background: var(--base-color-alt);
 }
 
+/* Edita a primeira linha de separação */
 .divider-1 {
   height: 1px;
   background: linear-gradient(
@@ -83,7 +99,7 @@ body {
     hsl(238, 98%, 63%)
   );
 }
-
+/* Edita a segunda linha de separação */
 .divider-2 {
   height: 1px;
   background: linear-gradient(
@@ -95,36 +111,35 @@ body {
 }
 
 /*====  LAYOUT ============================ */
+
+  /* Define um padrão para todas as classes container  */
 .container {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
 
+ /* Define um padrão para o grid  */
 .grid {
   display: grid;
   gap: 2rem;
 }
-
+/* Padding da sections, "desgrudando" os componentes do fim  */
 .section {
   padding: calc(5rem + var(--header-height)) 0;
 }
 
+
+/* todos as classes title, dentro da section, vai conter um margem na parte inferior */
 .section .title {
   margin-bottom: 1rem;
 }
 
+/* atribui o tamanho da var subtitle, ja declarada antes */
 .section .subtitle {
   font-size: var(--subtitle-font-size);
 }
 
-.section header {
-  margin-bottom: 4rem;
-}
-
-.section header strong {
-  color: var(--base-color);
-}
-
+/* Define as configurações do portugues */
 #header {
   border-bottom: 1px solid #e4e4e4;
   margin-bottom: 2rem;
@@ -138,25 +153,32 @@ body {
   width: 100%;
 }
 
+/* Coloca um box shadow quando ocorre scroll */
 #header.scroll {
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
 }
 
 /*====  LOGO ============================ */
+
+/* Configurações inicia do logo, fonte e cor */
 .logo {
   font: 700 1.31rem var(--title-font);
   color: var(--title-color);
 }
 
+/* Toda tag span, vai contar essa cor base, definida antes */
 .logo span {
   color: var(--base-color);
 }
 
+/* toda class logo-alt que tiver um span dentro, vai preencher o texto desse span com a cor definida */
 .logo-alt span {
   color: var(--body-color);
 }
 
 /*====  NAVIGATION ============================ */
+
+/* cuida do cabeçalho do site  */
 nav {
   height: var(--header-height);
   display: flex;
@@ -164,21 +186,19 @@ nav {
   justify-content: space-between;
   width: 100%;
 }
-
-nav ul li {
-  text-align: center;
-}
-
+/* faz a transição na nav */
 nav ul li a {
   transition: color 0.2s;
   position: relative;
 }
 
+/* cor da fonte na nav  */
 nav ul li a:hover,
 nav ul li a.active {
   color: var(--base-color);
 }
 
+/* para tratar a transição  */
 nav ul li a::after {
   content: '';
   width: 0%;
@@ -192,85 +212,29 @@ nav ul li a::after {
   transition: width 0.2s;
 }
 
+/* Define o tamanho da transição */
 nav ul li a:hover::after,
 nav ul li a.active::after {
   width: 100%;
 }
 
-nav .menu {
-  opacity: 0;
-  visibility: hidden;
-  top: -20rem;
-  transition: 0.2s;
-}
-
-nav .menu ul {
-  display: none;
-}
-
-/* Mostrar menu */
-nav.show .menu {
-  opacity: 1;
-  visibility: visible;
-
-  background: var(--body-color);
-
-  height: 100vh;
-  width: 100vw;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  display: grid;
-  place-content: center;
-}
-
-nav.show .menu ul {
-  display: grid;
-}
-
-nav.show ul.grid {
-  gap: 4rem;
-}
-
-/* toggle menu */
-.toggle {
-  color: var(--base-color);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-nav .icon-close {
-  visibility: hidden;
-  opacity: 0;
-
-  position: absolute;
-  top: -1.5rem;
-  right: 1.5rem;
-
-  transition: 0.2s;
-}
-
-nav.show div.icon-close {
-  visibility: visible;
-  opacity: 1;
-  top: 1.5rem;
-}
-
 /*====  HOME ============================ */
-#home {
-  overflow: hidden;
-}
 
+/* define hidden para a caixa */
+#home {
+  overflow: hidden ;
+}
+/* definindo a margem da class container dentro de um id Home */
 #home .container {
   margin: 0;
 }
 
+/* definindo o padrão das imagens */
 #home .image {
   position: relative;
 }
 
+/* o quadrado colorido de fora das imagens do home*/
 #home .image::before {
   content: '';
   height: 100%;
@@ -278,135 +242,129 @@ nav.show div.icon-close {
   background: var(--base-color-second);
   position: absolute;
   top: -16.8%;
-  left: 16.7%;
+  left: 10.7%;
   z-index: 0;
 }
 
+/* define o posicionamento da imagem como relative, a esquerda */
 #home .image img {
   position: relative;
-  right: 2.93rem;
+  right: 3rem;
 }
 
+/* deixa as bordas arredondadas */
 #home .image img,
 #home .image::before {
   border-radius: 0.25rem;
 }
 
+/* Define uma margim na classe texto e centraliza */
 #home .text {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   text-align: center;
 }
 
+/* as tags h1, possuem um margem em baixo */
 #home .text h1 {
   margin-bottom: 1rem;
 }
 
+/* as tags p possuem uma margem de 2rem */
 #home .text p {
   margin-bottom: 2rem;
 }
 
 /*====  ABOUT ============================ */
+
+/* coloca a cor da "pagina sobre" */
 #about {
   background: white;
 }
-
+/* define a margem 0 para a class container dentro do id #about */
 #about .container {
   margin: 0;
 }
 
+/* define posicionamento relative para a class img  */
 #about .image {
   position: relative;
 }
-
+/* Coloca a caixa colorida no fundo da imagem */
 #about .image::before {
   content: '';
   height: 100%;
   width: 100%;
   background: hsl(150, 34%, 89%);
   position: absolute;
-  top: -8.3%;
-  left: -33%;
-  z-index: 0;
+  top: -15.3%;
+  left: -13%;
+  
 }
 
+/* define um posisionamento relativo */
 #about .image img {
   position: relative;
 }
 
+/* deixa as bordas arredondadas */
 #about .image img,
 #about .image::before {
   border-radius: 0.25rem;
 }
 
+/* coloca uma margem nas duas laterais da caixa */
 #about .text {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
+
+/* Da um espanco entre os textos e o botao */
 #button-git-hub{
   margin-top: 2rem
 }
 
-footer .social {
-  grid-auto-flow: column;
-  width: fit-content;
-}
-
-nav .icon-instagram {
-  display: flex;
-  grid-auto-flow: column;
-}
-
-/* swiper */
-.swiper-slide {
-  height: auto;
-  padding: 4rem 1rem;
-}
-
-.swiper-pagination-bullet {
-  width: 0.75rem;
-  height: 0.75rem;
-}
-
-.swiper-pagination-bullet-active {
-  background: var(--base-color);
-}
-
-
 /*====  FOOTER ============================ */
+/* define a cor do fundo */
 footer {
   background: var(--base-color);
 }
-
+/* O respectivo padding da section presente no footer  */
 footer.section {
   padding: 4rem 0;
 }
 
+/* da um margim do logo no footer */
 footer .logo {
   display: inline-block;
   margin-bottom: 1.5rem;
 }
 
+/* define a cor e margim do brand  */
 footer .brand p {
   color: var(--text-color-light);
   margin-bottom: 0.75rem;
 }
 
+/* define a cor dos icons no fotter  */
 footer i {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--text-color-light);
 }
 
+/* deixa o grid como column  */
 footer .social {
   grid-auto-flow: column;
   width: fit-content;
 }
 
+/* define o tempo da transição do item abaixo */
 footer .social a {
   transition: 0.3s;
   display: inline-block;
 }
 
+/* o tamanho da transição */
 footer .social a:hover {
   transform: translateY(-8px);
 }
@@ -433,7 +391,7 @@ footer .social a:hover {
   transition: 0.3s;
   transform: translateY(100%);
 }
-
+/* Back to top */ 
 .back-to-top.show {
   visibility: visible;
   opacity: 1;
@@ -442,6 +400,9 @@ footer .social a:hover {
 
 /*========= MEDIA QUERIES =========*/
 /* extra large devices: 1200 > */
+
+
+/* com resoluções tamanhos menores de 1200px, utilizar estas configurações */
 @media (min-width: 1200px) {
   /* reusable classes */
   .container {
@@ -478,10 +439,6 @@ footer .social a:hover {
   nav .menu ul li a.title.active {
     font-weight: bold;
     -webkit-font-smoothing: auto;
-  }
-
-  nav .icon-menu {
-    display: none;
   }
 
   /* layout */
@@ -542,14 +499,6 @@ footer .social a:hover {
 
   footer .logo {
     font-size: 2.25rem;
-  }
-}
-/* large devices: 1023 > */
-/* large devices: 992 > */
-@media (min-width: 992px) {
-  :root {
-    --title-font-size: 2.25rem;
-    --subtitle-font-size: 1.125rem;
   }
 }
 
